@@ -1,16 +1,35 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import random
 
 
-def print_hi(Hari):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {Hari}')  # Press ⌘F8 to toggle the breakpoint.
+def number_guessing_game():
+    print("🎮 Welcome to the Number Guessing Game!")
+    print("I'm thinking of a number between 1 and 100.")
+
+    secret = random.randint(1, 100)
+    attempts = 0
+
+    while True:
+        guess_text = input("Enter your guess (or type 'q' to quit): ").strip().lower()
+
+        if guess_text == "q":
+            print(f"Goodbye! The number was {secret}.")
+            break
+
+        if not guess_text.isdigit():
+            print("Please enter a valid number.")
+            continue
+
+        guess = int(guess_text)
+        attempts += 1
+
+        if guess < secret:
+            print("Too low 👇")
+        elif guess > secret:
+            print("Too high 👆")
+        else:
+            print(f"✅ Correct! You guessed it in {attempts} tries.")
+            break
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('python')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    number_guessing_game()
